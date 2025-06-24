@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-lg p-4 border-0" data-aos="zoom-in">
+      <div class="text-center mb-3">
+        <img src="{% static 'images/medcare_icon.png' %}" width="50" alt="Logo">
+        <h4 class="mt-2">Create your <span class="text-success">MedCare</span> account</h4>
+      </div>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} text-center">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+          <input type="text" name="username" id="username" class="form-control" placeholder="Choose a username" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+          <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="mobile_number" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+          <input type="text" name="mobile_number" id="mobile_number" class="form-control" placeholder="Enter your mobile number" required pattern="\d{10}" title="Enter a valid 10-digit number">
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+          <input type="password" name="password" id="password" class="form-control" placeholder="Create a strong password" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="role" class="form-label">Register As <span class="text-danger">*</span></label>
+          <select name="role" id="role" class="form-select" required>
+            <option value="" selected disabled>-- Select Role --</option>
+            <option value="doctor">Doctor</option>
+            <option value="patient">Patient</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">📝 Sign Up</button>
+      </form>
+
+      <p class="text-center mt-3 mb-0">
+        Already registered? <a href="{% url 'login' %}" class="text-primary">Login here</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

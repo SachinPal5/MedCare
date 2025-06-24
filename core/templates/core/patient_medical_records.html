@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <h3 class="text-center mb-4">🗂️ My Medical Records</h3>
+
+    {% if records %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Doctor</th>
+            <th>Description</th>
+            <th>File</th>
+            <th>Uploaded At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in records %}
+          <tr>
+            <td>{{ record.doctor.username }}</td>
+            <td>{{ record.description }}</td>
+            <td><a href="{{ record.file.url }}" target="_blank">📄 View</a></td>
+            <td>{{ record.uploaded_at|date:"M d, Y H:i" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="text-center">No medical records found.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

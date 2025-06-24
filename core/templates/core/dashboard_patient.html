@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+  <div class="card shadow-lg p-4" data-aos="fade-up">
+    <h2 class="text-center mb-3">🙋‍♂️ Patient Dashboard</h2>
+    <p class="text-center text-muted mb-4">
+      Welcome, <strong>{{ user.username }}</strong>! Access appointments, upload reports, and view prescriptions.
+    </p>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- Book Appointment -->
+      <div class="col-md-5">
+        <div class="card text-white bg-success shadow-sm h-100" data-aos="zoom-in">
+          <div class="card-body text-center">
+            <h5 class="card-title">📅 Book Appointment</h5>
+            <p class="card-text">Choose an available slot with a doctor and confirm your visit.</p>
+            <a href="{% url 'book_appointment' %}" class="btn btn-light w-100">Book Now</a>
+            <a href="{% url 'view_prescriptions' %}" class="btn btn-outline-light w-100 mt-2">View Prescriptions</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Medical Report -->
+      <div class="col-md-5">
+        <div class="card text-white bg-dark shadow-sm h-100" data-aos="zoom-in" data-aos-delay="100">
+          <div class="card-body text-center">
+            <h5 class="card-title">📤 Upload Report</h5>
+            <p class="card-text">Send your medical reports (PDF/Image) to your doctor securely.</p>
+            <a href="{% url 'upload_record' %}" class="btn btn-light w-100">Upload Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Medical Records -->
+      <div class="col-md-5">
+        <div class="card text-white bg-primary shadow-sm h-100" data-aos="zoom-in" data-aos-delay="200">
+          <div class="card-body text-center">
+            <h5 class="card-title">📁 My Medical Records</h5>
+            <p class="card-text">Access your uploaded reports anytime, anywhere.</p>
+            <a href="{% url 'patient_medical_records' %}" class="btn btn-light w-100">View Records</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Appointment History -->
+      <div class="col-md-5">
+        <div class="card text-white bg-info shadow-sm h-100" data-aos="zoom-in" data-aos-delay="300">
+          <div class="card-body text-center">
+            <h5 class="card-title">📄 Appointment History</h5>
+            <p class="card-text">See all your bookings and check their status.</p>
+            <a href="{% url 'appointment_history' %}" class="btn btn-light w-100">View History</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="mb-4 text-center">📋 Your Prescriptions</h3>
+
+  {% if prescriptions %}
+    <div class="row">
+      {% for pres in prescriptions %}
+        <div class="col-md-6 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Dr. {{ pres.doctor.username }}</h5>
+              <p class="card-text">
+                <strong>Date:</strong> {{ pres.created_at.date }}<br>
+                <strong>Notes:</strong> {{ pres.notes|truncatewords:15 }}
+              </p>
+              <a href="{{ pres.pdf.url }}" class="btn btn-outline-primary" download>Download PDF</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-center text-muted">No prescriptions found.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+  <div class="card shadow-lg p-4" data-aos="fade-up">
+    <h2 class="text-center mb-3">👨‍⚕️ Doctor Dashboard</h2>
+    <p class="text-center text-muted mb-4">
+      Welcome, <strong>{{ user.username }}</strong>! Manage appointments, slots, and prescriptions.
+    </p>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- Create Time Slot -->
+      <div class="col-md-5">
+        <div class="card text-white bg-success h-100 shadow-sm" data-aos="zoom-in">
+          <div class="card-body text-center">
+            <h5 class="card-title">🕒 Create Time Slot</h5>
+            <p class="card-text">Add available slots for patients to book.</p>
+            <a href="{% url 'create_timeslot' %}" class="btn btn-light w-100">Create Slot</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Appointments -->
+      <div class="col-md-5">
+        <div class="card text-white bg-primary h-100 shadow-sm" data-aos="zoom-in" data-aos-delay="100">
+          <div class="card-body text-center">
+            <h5 class="card-title">📅 My Appointments</h5>
+            <p class="card-text">Check patient bookings and manage them.</p>
+            <a href="{% url 'doctor_appointment' %}" class="btn btn-light w-100">View Appointments</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Prescription -->
+      <div class="col-md-5">
+        <div class="card text-white bg-dark h-100 shadow-sm" data-aos="zoom-in" data-aos-delay="200">
+          <div class="card-body text-center">
+            <h5 class="card-title">💊 Add Prescription</h5>
+            <p class="card-text">Write and share new prescriptions with patients.</p>
+            <a href="{% url 'add_prescription' %}" class="btn btn-light w-100">Add Prescription</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Prescriptions -->
+      <div class="col-md-5">
+        <div class="card text-white bg-info h-100 shadow-sm" data-aos="zoom-in" data-aos-delay="300">
+          <div class="card-body text-center">
+            <h5 class="card-title">📄 Prescriptions</h5>
+            <p class="card-text">Review prescriptions you've issued.</p>
+            <a href="{% url 'view_prescriptions' %}" class="btn btn-light w-100">View Prescriptions</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Medical Records -->
+      <div class="col-md-5">
+        <div class="card text-dark bg-warning h-100 shadow-sm" data-aos="zoom-in" data-aos-delay="400">
+          <div class="card-body text-center">
+            <h5 class="card-title">📤 Patient Reports</h5>
+            <p class="card-text">Access medical files uploaded by patients.</p>
+            <a href="{% url 'view_medical_records' %}" class="btn btn-dark w-100">View Reports</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

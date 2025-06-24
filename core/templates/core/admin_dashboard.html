@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="text-center mb-4">🛠️ Admin Dashboard</h2>
+
+  <!-- All Appointments -->
+  <div class="mb-5">
+    <h4>📅 All Appointments</h4>
+    <table class="table table-bordered text-center">
+      <thead class="table-light">
+        <tr>
+          <th>Doctor</th>
+          <th>Patient</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for app in appointments %}
+        <tr>
+          <td>{{ app.doctor.username }}</td>
+          <td>{{ app.patient.username }}</td>
+          <td>{{ app.timeslot.date }}</td>
+          <td>{{ app.timeslot.time }}</td>
+          <td>{{ app.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Uploaded Medical Records -->
+  <div class="mb-5">
+    <h4>📤 Uploaded Medical Records</h4>
+    <table class="table table-bordered text-center">
+      <thead class="table-light">
+        <tr>
+          <th>Patient</th>
+          <th>Doctor</th>
+          <th>Description</th>
+          <th>File</th>
+          <th>Uploaded At</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in records %}
+        <tr>
+          <td>{{ record.patient.username }}</td>
+          <td>{{ record.doctor.username }}</td>
+          <td>{{ record.description }}</td>
+          <td><a href="{{ record.file.url }}" target="_blank">View</a></td>
+          <td>{{ record.uploaded_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ✅ Add Chart Button -->
+  <div class="text-center mt-4">
+    <a href="{% url 'admin_chart' %}" class="btn btn-outline-info w-50">
+      📊 View Patients per Doctor Chart
+    </a>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2 class="mb-4" data-aos="fade-down">📅 Book an Appointment</h2>
+
+{% if slots %}
+  <div class="row">
+    {% for slot in slots %}
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:"1" }}00">
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ slot.doctor.username }}</h5>
+            <p class="card-text">
+              Date: {{ slot.date }}<br>
+              Time: {{ slot.time }}
+            </p>
+            <form method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="slot_id" value="{{ slot.id }}">
+              <button type="submit" class="btn btn-primary w-100">Book Now</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p data-aos="fade-in">No available time slots right now. Please check back later.</p>
+{% endif %}
+{% endblock %}

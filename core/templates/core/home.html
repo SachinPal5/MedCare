@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+
+  <!-- Hero Section -->
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center text-md-start">
+      <h1 class="display-5 fw-bold">Your Health, Our Priority 🏥</h1>
+      <p class="lead mt-3">Book appointments with trusted doctors, upload medical reports, and access prescriptions — all in one platform.</p>
+      <div class="mt-4">
+        <a href="{% url 'signup' %}" class="btn btn-success btn-lg me-3">Get Started</a>
+        <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg">Login</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 text-center mt-4 mt-md-0">
+      <img src="{% static 'images/hero-doctor.avif' %}" alt="Online Doctor" class="img-fluid rounded">
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="row text-center mt-5">
+    <h2 class="mb-4">Why Choose MedCare?</h2>
+    <div class="col-md-4">
+      <img src="{% static 'images/appointment.jpg' %}" class="mb-2" width="80" alt="Appointment">
+      <h5>Easy Booking</h5>
+      <p>Book slots with top doctors in just a few clicks.</p>
+    </div>
+    <div class="col-md-4">
+      <img src="{% static 'images/report-upload.png' %}" class="mb-2" width="80" alt="Upload">
+      <h5>Upload Reports</h5>
+      <p>Securely upload and share medical records.</p>
+    </div>
+    <div class="col-md-4">
+      <img src="{% static 'images/prescription.avif' %}" class="mb-2" width="80" alt="Prescriptions">
+      <h5>Access Prescriptions</h5>
+      <p>View and download your prescriptions anytime.</p>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
